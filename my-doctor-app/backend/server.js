@@ -10,6 +10,7 @@ const db = mysql.createConnection({
   user: 'avnadmin',
   password: process.env.DB_PASSWORD,
   database: 'defaultdb',
+  port:'21820'
 });
 
 db.connect(err => {
