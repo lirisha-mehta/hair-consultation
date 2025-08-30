@@ -6,10 +6,10 @@ const cors = require('cors');
 const app = express();
 
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'admin123',
-  database: 'hairclinic',
+  host: 'mysql-32596f0-mehtalirisha48-d4e6.d.aivencloud.com',
+  user: 'avnadmin',
+  password: process.env.DB_PASSWORD,
+  database: 'defaultdb',
 });
 
 db.connect(err => {
