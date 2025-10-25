@@ -32,13 +32,13 @@ app.post('/api/appointments', (req, res) => {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
+        user: 'mehtalirisha48@gmail.com',
+        pass: 'wztzmhhcahwjggoo',
       },
     });
 
     const mailOptions = {
-      from: process.env.EMAIL_USER,
+      from: 'mehtalirisha48@gmail.com',
       to: 'mehtaruby1971@gmail.com',
       subject: 'New Appointment Request',
       text: `New appointment details: 
