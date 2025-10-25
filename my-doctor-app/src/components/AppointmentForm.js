@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Container, TextField, Button, Typography, Grid, Box, Alert } from "@mui/material";
-
+const cors = require('cors');
+app.use(cors());
 export default function AppointmentForm() {
   const [form, setForm] = useState({
     name: "",
