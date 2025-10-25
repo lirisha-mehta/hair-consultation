@@ -4,7 +4,7 @@ const nodemailer = require('nodemailer');
 const mysql = require('mysql2');
 const cors = require('cors');
 const app = express();
-
+app.use(cors());
 const db = mysql.createConnection({
   host: 'mysql-32596f0-mehtalirisha48-d4e6.d.aivencloud.com',
   user: 'avnadmin',
