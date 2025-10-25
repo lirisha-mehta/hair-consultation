@@ -28,26 +28,21 @@ app.post('/api/appointments', (req, res) => {
       console.error('Error inserting data:', err);
       return res.status(500).send('Error saving appointment');
     }
-    
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: 'mehtalirisha48@gmail.com',
-        pass: 'wztzmhhcahwjggoo',
-      },
-    });
+    const sgMail = require('@sendgrid/mail');
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-    const mailOptions = {
-      from: 'mehtalirisha48@gmail.com',
-      to: 'mehtaruby1971@gmail.com',
-      subject: 'New Appointment Request',
-      text: `New appointment details: 
-      Name: ${name}
-      Email: ${email}
-      Phone: ${phone}
-      Service: ${service}
-      Date: ${date}`,
-    };
+// ...inside your db.query callback, replace the nodemailer code with:
+const msg = {
+  to: 'mehtaruby1971@gmail.com', // recipient
+  from: 'mehtalirisha48@gmail.com', // verified sender in SendGrid
+  subject: 'New Appointment Request',
+  text: `New appointment details: 
+    Name: ${name}
+    Email: ${email}
+    Phone: ${phone}
+    Service: ${service}
+    Date: ${date}`,
+};
 
     transporter.sendMail(mailOptions, (err, info) => {
       if (err) {
