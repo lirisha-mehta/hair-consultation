@@ -44,14 +44,16 @@ const msg = {
     Date: ${date}`,
 };
 
-    transporter.sendMail(mailOptions, (err, info) => {
-      if (err) {
-        console.log('Error sending email:', err);
-        return res.status(500).send('Error sending email');
-      }
-      console.log('Email sent:', info.response);
-      res.status(200).send('Appointment successfully submitted!');
-    });
+   sgMail
+  .send(msg)
+  .then(() => {
+    console.log('Email sent via SendGrid');
+    res.status(200).send('Appointment successfully submitted!');
+  })
+  .catch(error => {
+    console.error('SendGrid error:', error.response ? error.response.body : error);
+    res.status(502).send('Error sending email');
+  });
   });
 });
 
